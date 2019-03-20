@@ -1,0 +1,25 @@
+{
+    "name": "旅游手账 —— 毛呆",
+    "short_name": "旅游手账",
+    "theme_color": "#4DBA87",
+    "icons": [
+        {
+            "src": "./android-chrome-192x192.png",
+            "sizes": "32x32",
+            "type": "image/png"
+        },
+        {
+            "src": "./android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "./android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "/pwa/tripnote",
+    "display": "standalone",
+    "background_color": "#000000"
+}

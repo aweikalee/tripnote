@@ -1,0 +1,70 @@
+/* 颜色 */
+
+$c-black: #000;
+$c-white: #fff;
+$c-333: #333;
+$c-666: #666666;
+$c-999: #999;
+$c-aaa: #aaa;
+$c-ccc: #ccc;
+$c-eee: #eee;
+$c-f0: #f0f0f0;
+$c-f5: #f5f5f5;
+
+$c-primary: #88eedd; //主色
+$c-primary-font: #77ddcc;
+
+$c-blue: $c-primary;
+$c-pink: #fdb6c6;
+$c-orange: #ffcc99;
+
+$c-warning: $c-pink;
+$c-danger: $c-orange;
+
+$c-mask-white: transparentize($c-f5, 0.3);
+
+@mixin color-hover($name, $color) {
+    #{$name}: $color * 0.85 + $c-white * 0.15;
+}
+@mixin color-active($name, $color) {
+    #{$name}: $color * 0.95 + $c-black * 0.05;
+}
+@mixin color-select($name, $color) {
+    #{$name}: $color * 0.8 + $c-white * 0.2;
+}
+@mixin add-hover-active($name, $color) {
+    &:hover {
+        @include color-hover($name, $color);
+    }
+    &:active {
+        @include color-active($name, $color);
+    }
+}
+
+/* 阴影 */
+$shadow-color: $c-black;
+$text-shadow-normal: 0 0 1.2rem transparentize($shadow-color, 0.8);
+@function box-shadow($level) {
+    @return 0 0 0.3rem transparentize($shadow-color, 0.95 - $level * 0.05),
+        0.2rem + 0.05rem * $level 0.3rem + 0.05rem * $level 0.3rem *
+            ($level + 1) transparentize($shadow-color, 0.95 - $level * 0.05);
+}
+
+/* 字体 */
+$font-default: 'PingFang SC', 'Microsoft YaHei', 'Helvetica';
+
+/* 移动端平滑滚动 */
+@mixin touch-scrolling() {
+    -webkit-overflow-scrolling: touch;
+}
+
+/* 网格背景 */
+@mixin ins-grid() {
+    background-image: linear-gradient(
+            90deg,
+            rgba($c-ccc, 0.7) 7.5%,
+            transparent 0
+        ),
+        linear-gradient(rgba($c-ccc, 0.7), 7.5%, transparent 0);
+    background-size: 15px 15px;
+}

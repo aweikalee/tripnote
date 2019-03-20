@@ -1,0 +1,26 @@
+{
+    "grid": {
+        "top": 24,
+        "bottom": 44,
+        "left": 12,
+        "right": 12,
+        "containLabel": true
+    },
+    "legend": {
+        "type": "scroll",
+        "left": "center",
+        "bottom": 0,
+        "padding": 12,
+        "itemWidth": 35,
+        "itemHeight": 20,
+        "itemGap": 20,
+        "inactiveColor": "#ddd",
+        "textStyle": {
+            "fontSize": "100%",
+            "color": "#666",
+            "lineHeight": 20
+        },
+        "pageIconSize": 20
+    },
+    "animationEasing": "cubicOut"
+}

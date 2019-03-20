@@ -1,0 +1,170 @@
+@import '../style.scss';
+
+/* 改变主题色变量 */
+$--color-primary: $c-primary-font;
+
+/// color
+$--color-success: $c-primary;
+$--message-info-color: $c-white;
+$--border-color-base: $c-ccc;
+
+/// boxShadow|[基础投影,box shadow base,box shadow base]|Shadow|1
+$--box-shadow-base: box-shadow(3);
+// boxShadow|[深色投影,box shadow,box shadow]|Shadow|1
+$--box-shadow-dark: box-shadow(5);
+/// boxShadow|[浅色投影,box shadow,box shadow]|Shadow|1
+$--box-shadow-light: box-shadow(1);
+
+/// borderRadius|[大圆角,border radius base,border radius base]|Radius|0
+$--border-radius-base: 0.6rem;
+
+/* Dialog */
+$--dialog-box-shadow: $--box-shadow-dark;
+
+/* Notification */
+$--notification-shadow: $--box-shadow-base;
+
+/* Dropdown */
+$--dropdown-menuItem-hover-fill: $c-eee;
+$--dropdown-menuItem-hover-color:$c-333;
+
+/* 改变 icon 字体路径变量，必需 */
+$--font-path: '~element-ui/lib/theme-chalk/fonts';
+@import '~element-ui/packages/theme-chalk/src/icon';
+@import '~element-ui/packages/theme-chalk/src/checkbox.scss';
+@import '~element-ui/packages/theme-chalk/src/checkbox-group.scss';
+@import '~element-ui/packages/theme-chalk/src/date-picker.scss';
+@import '~element-ui/packages/theme-chalk/src/dialog.scss';
+@import '~element-ui/packages/theme-chalk/src/dropdown.scss';
+@import '~element-ui/packages/theme-chalk/src/loading.scss';
+@import '~element-ui/packages/theme-chalk/src/message.scss';
+@import '~element-ui/packages/theme-chalk/src/message-box.scss';
+@import '~element-ui/packages/theme-chalk/src/notification.scss';
+@import '~element-ui/packages/theme-chalk/src/radio.scss';
+@import '~element-ui/packages/theme-chalk/src/radio-group.scss';
+@import '~element-ui/packages/theme-chalk/src/select.scss';
+@import '~element-ui/packages/theme-chalk/src/switch.scss';
+@import '~element-ui/packages/theme-chalk/src/time-select.scss';
+// @import '~element-ui/packages/theme-chalk/src/index';
+
+/* 遮罩 */
+.v-modal {
+    background-color: $c-mask-white;
+    opacity: 1;
+}
+
+/* Loading */
+.el-loading-mask {
+    background-color: $c-mask-white;
+}
+.el-loading-spinner .path {
+    stroke-width: 0.3rem;
+}
+.el-loading-mask.is-fullscreen .el-loading-spinner {
+    margin-top: 0;
+    transform: translateY(-50%);
+}
+
+/* Message */
+.el-message {
+    min-width: auto;
+    max-width: 90%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(50, 50, 51, 0.88);
+    border: none;
+}
+.el-message .el-icon-info {
+    display: none;
+}
+.el-message__content {
+    line-height: 1.5;
+}
+
+/* MessageBox */
+.el-message-box {
+    width: calc(100% - 2.4rem);
+    max-width: 40rem;
+}
+
+/* Dialog */
+.el-dialog {
+    border-radius: 0.6rem;
+    width: calc(100% - 2.4rem);
+    max-width: 50rem;
+}
+.el-dialog__title {
+    font-weight: bold;
+}
+.el-dialog__headerbtn {
+    padding: 5px;
+}
+
+/* Radio */
+.el-radio {
+    margin-right: 0.6rem;
+    color: $c-999;
+}
+.el-radio-group {
+    .el-radio {
+        margin-top: 0.6rem;
+        margin-bottom: 0.6rem;
+    }
+}
+.el-radio.is-bordered + .el-radio.is-bordered {
+    margin-left: 0;
+}
+.el-radio-group {
+    display: block;
+}
+.el-radio.is-bordered.el-radio--medium {
+    padding-right: 1.2rem;
+}
+
+/* Checkbox */
+.el-checkbox {
+    margin-right: 0.6rem;
+    color: $c-999;
+}
+.el-checkbox-group {
+    .el-checkbox {
+        margin-top: 0.6rem;
+        margin-bottom: 0.6rem;
+    }
+}
+.el-checkbox.is-bordered + .el-checkbox.is-bordered {
+    margin-left: 0;
+}
+.el-checkbox-group {
+    display: block;
+}
+.el-checkbox.is-bordered.el-checkbox--medium {
+    padding-right: 1.2rem;
+}
+
+/* Input */
+.el-select, .el-date-editor {
+    width: 100% !important;
+    max-width: 20rem !important;
+}
+.el-input, .el-input__inner {
+    width: 100%;
+}
+.el-date-editor .el-input__inner {
+    cursor: pointer;
+}
+
+/* 平滑滚动 */
+.time-select .el-picker-panel__content,
+.el-scrollbar__wrap,
+.el-dialog__wrapper {
+    @include touch-scrolling();
+}
+
+/* Notification  */
+.el-notification  {
+    max-width: calc(100vw - 8.4rem);
+}
+.el-notification__group {
+    margin-right: 1.3rem;
+}

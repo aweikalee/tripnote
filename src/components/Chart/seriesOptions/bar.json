@@ -1,0 +1,10 @@
+{
+    "barCategoryGap": "50%",
+    "label": {
+        "normal": {
+            "show": true,
+            "position": "insideTop",
+            "fontSize": "70%"
+        }
+    }
+}

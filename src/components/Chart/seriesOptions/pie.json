@@ -1,0 +1,17 @@
+{
+    "selectedMode": "single",
+    "radius": ["0%", "65%"],
+    "center": ["50%", "45%"],
+    "label": {
+        "normal": {
+            "textStyle": {
+                "fontSize": "100%"
+            }
+        }
+    },
+    "labelLine": {
+        "normal": {
+            "smooth": 0.2
+        }
+    }
+}
