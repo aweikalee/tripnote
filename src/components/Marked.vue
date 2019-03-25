@@ -56,7 +56,7 @@ export default class Marked extends Vue {
 </script>
 
 <template>
-    <div class="cmpt-marked" ref="el" v-if="this.value" v-html="marked(this.value)" v-preview></div>
+    <div class="cmpt-marked" ref="el" v-if="this.value" v-html="marked(this.value)" v-previews></div>
 </template>
 
 <style lang="scss">
