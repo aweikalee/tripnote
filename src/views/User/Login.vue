@@ -31,6 +31,13 @@ export default class Login extends Vue {
                     nickname: res.nickname
                 })
                 const path = this.$route.path
+                if (res.username === 'test') {
+                    this.$notify.info({
+                        title: '',
+                        message: '测试帐号，所有请求都会返回成功，但数据不会有任何改变。',
+                        duration: 0
+                    })
+                }
                 if (path === '/user/login' || path === '/login') {
                     this.$router.push('/user')
                 } else {
