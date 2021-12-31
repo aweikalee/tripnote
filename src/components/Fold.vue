@@ -39,7 +39,7 @@ export default class Fold extends Vue {
 
     onEnd() {
         if (this.value) {
-            this.$refs.wrapper.style.height = null
+            this.$refs.wrapper.style.height = null as any
         } else {
             this.show = false
         }

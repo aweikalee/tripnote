@@ -58,7 +58,7 @@ export default class extends ApiBase {
                                 }
                                 return db.update(item)
                             }
-                        })
+                        }) as any
                     }
                     Promise.all(dbRequest)
                         .then(() => {

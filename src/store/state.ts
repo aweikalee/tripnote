@@ -1,7 +1,6 @@
 /*
  * state，分为localState和normalState，区别是保存于localStorage和内存
  */
-import { INormalState } from './state'
 import { getItem } from './method'
 import {
     IItinerary,

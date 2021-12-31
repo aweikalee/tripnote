@@ -23,7 +23,7 @@ export default class TagEditor extends Vue {
                 )
                 this.close()
             } else {
-                focusField(this.$el, this.errors.items[0].field)
+                focusField(this.$el, (this as any).errors.items[0].field)
             }
         })
     }

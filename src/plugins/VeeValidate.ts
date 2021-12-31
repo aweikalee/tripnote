@@ -2,28 +2,22 @@ import VeeValidate, { Validator } from 'vee-validate'
 import zh_CN from 'vee-validate/dist/locale/zh_CN'
 import { scrollTo } from '@/utils/scroll'
 
-Validator.extend(
-    'array_repeat',
-    <T>(
-        value: T,
-        options: { data: T[]; method: (a: T, b: T, index: number) => boolean }
-    ) => {
-        const method = options.method
-            ? options.method
-            : (a: T, b: T) => {
-                  return a === b
-              }
-        return options.data.find((item, index) => method(value, item, index))
-            ? false
-            : true
-    }
-)
+Validator.extend('array_repeat', <T>(value: T, options: any) => {
+    const method = options.method
+        ? options.method
+        : (a: T, b: T) => {
+              return a === b
+          }
+    return options.data.find((item: any, index: number) => method(value, item, index))
+        ? false
+        : true
+})
 
 Validator.extend('array_required', (value: any, options: any) => {
     return value.length > 0
 })
 
-Validator.extend('greater', (value: any, min: number = 0) => {
+Validator.extend('greater', (value: any, min: any = 0) => {
     return value > min
 })
 
