@@ -23,7 +23,7 @@ export const server = {
 export const ossServer = {
     name,
     bucket: 'awwwk',
-    baseUrl: !dev || !ossMock ? '//img.awwwk.com' : '/img',
+    baseUrl: !dev || !ossMock ? '//awwwk.oss-cn-hangzhou.aliyuncs.com' : '/img',
     accessid: 'LTAIgR4F6QvWtnAo'
 }
 

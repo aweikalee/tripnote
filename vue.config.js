@@ -101,7 +101,7 @@ module.exports = {
                 },
                 {
                     /* 缓存oss图片 */
-                    urlPattern: new RegExp('^http(s?)://img.awwwk.com/'),
+                    urlPattern: new RegExp('^http(s?)://awwwk.oss-cn-hangzhou.aliyuncs.com/'),
                     handler: 'cacheFirst',
                     options: {
                         cacheName: 'img-cache',
@@ -178,11 +178,11 @@ module.exports = {
                     // 'wordPartOperations'
                 ]
             }),
-            new CompressionPlugin({
-                test: /\.js$|\.html$|\.css/,
-                threshold: 10240,
-                deleteOriginalAssets: false
-            })
+            // new CompressionPlugin({
+            //     test: /\.js$|\.html$|\.css/,
+            //     threshold: 10240,
+            //     deleteOriginalAssets: false
+            // })
         ]
     },
     chainWebpack: (config) => {
