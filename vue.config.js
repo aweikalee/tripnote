@@ -8,7 +8,7 @@ const env = process.env
 env.VUE_APP_TITLE = '旅游手账 —— 毛呆'
 env.VUE_APP_SHORT_TITLE = '旅游手账'
 module.exports = {
-    publicPath: env.VUE_APP_URL_BASE,
+    baseUrl: env.VUE_APP_URL_BASE,
     assetsDir: `${env.VUE_APP_FILE_SELF}/vue`, // vue打包文件输出的路径
     outputDir: `dist/${env.VUE_APP_FILE_PUBLIC}`, // 定义打包输出的根路径
     indexPath: '../index.html',
@@ -73,8 +73,8 @@ module.exports = {
             clientsClaim: true,
             runtimeCaching: [
                 {
-                    /* 缓存pwa文件夹下所有文件 */
-                    urlPattern: new RegExp('/pwa/'),
+                    /* 静态文件 */
+                    urlPattern: /\/(.*\.html|.*\.js|(public\/.+))/,
                     handler: 'staleWhileRevalidate',
                     options: {
                         cacheName: 'html-cache',
