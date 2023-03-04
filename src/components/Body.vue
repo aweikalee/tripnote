@@ -18,6 +18,7 @@ export default class Body extends Vue {
         <div class="cmpt-body_content">
             <slot></slot>
         </div>
+        <div class="safe-area-inset-bottom"></div>
     </div>
 </template>
 
@@ -50,6 +51,10 @@ $c-body-background: #fafafa;
             /* 横屏取消固定 */
             position: static;
         }
+    }
+    .safe-area-inset-bottom {
+        height: constant(safe-area-inset-bottom);
+        height: env(safe-area-inset-bottom);
     }
 }
 </style>

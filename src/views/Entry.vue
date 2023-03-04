@@ -157,6 +157,8 @@ export default class Entry extends Vue {
     box-shadow: box-shadow(4);
     overflow: hidden;
     transition: box-shadow 0.3s ease, max-width 0.6s ease;
+    padding-bottom: constant(safe-area-inset-bottom);
+    padding-bottom: env(safe-area-inset-bottom);
 }
 @media screen and (min-width: 750px) {
     .nav {
