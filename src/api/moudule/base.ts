@@ -6,7 +6,7 @@ import { Adapt, IAdaptRuleOption } from '../adapt'
 const http = new HttpRequest(
     {
         baseURL: server.baseUrl,
-        timeout: 10000,
+        timeout: 0,
         withCredentials: true // 携带cookie
     },
     {
