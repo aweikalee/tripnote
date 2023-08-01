@@ -43,8 +43,8 @@ const defaultHttpConfig: IHttpBaseConfig = {
 }
 
 export class HttpRequest {
+    instance!: AxiosInstance
     private MIN_TIME!: number
-    private instance!: AxiosInstance
 
     constructor(
         axiosConfig?: AxiosRequestConfig,

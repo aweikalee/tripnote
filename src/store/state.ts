@@ -19,6 +19,7 @@ export interface ILocalState {
         time: number
         value: any
     }>
+    token: string
     username: string
     nickname: string
     loggedin: boolean
@@ -27,6 +28,7 @@ export interface ILocalState {
 export const localState: ILocalState = {
     lastRoute: '', // 记录用户最后浏览的页面 用于PWA打开时能直接打开该页（允许记录的页面有[/, /itinerary/:id, /schedule/:id, /bill/:pid]）
     drafts: [],
+    token: '',
     username: '',
     nickname: '',
     loggedin: false,

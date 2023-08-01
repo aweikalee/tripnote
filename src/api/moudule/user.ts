@@ -9,6 +9,7 @@ export default class extends ApiBase {
         return this.http.post<{
             username: string
             nickname: string
+            token: string
         }>('/login', {
             username,
             password
@@ -18,7 +19,7 @@ export default class extends ApiBase {
         return new Promise((resolve, reject) => {
             this.http.post('/logout').catch((err) => reject(err))
             store.commit('logout')
-            resolve()
+            resolve(null)
         })
     }
     register(data: any) {

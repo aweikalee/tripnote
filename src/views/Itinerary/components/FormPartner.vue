@@ -52,7 +52,7 @@ export default class IndexFormPartnerEditor extends Mixins(TagEditor) {
         <Label title="用户ID" description="不知道可为空"/>
         <ErrorMessage name="用户ID" :error-message="errors.first('用户ID')"/>
         <Field
-            v-model="stage.uid"
+            v-model.number="stage.uid"
             placeholder="选填"
             :error="!!errors.first('用户ID')"
             width="small"

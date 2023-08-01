@@ -65,7 +65,8 @@ export default class BillEditor extends Vue {
         balance: [],
         create_time: 0,
         update_time: 0,
-        count: 1
+        count: 1,
+        deletedAt: null
     }
 
     ready = false
@@ -193,7 +194,7 @@ export default class BillEditor extends Vue {
         </el-radio-group>
         <ErrorMessage name="金额" :error-message="errors.first('金额')"/>
         <Field
-            v-model="form.amount"
+            v-model.number="form.amount"
             type="number"
             placeholder="总共花了多少？"
             width="small"

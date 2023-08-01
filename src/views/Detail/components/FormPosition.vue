@@ -56,7 +56,7 @@ export default class ScheduleFormPositionEditor extends Mixins(TagEditor) {}
         <ErrorMessage name="经度" :error-message="errors.first('经度')"/>
         <ErrorMessage name="纬度" :error-message="errors.first('纬度')"/>
         <Field
-            v-model="stage.x"
+            v-model.number="stage.x"
             placeholder="-180 ~ 180"
             type="number"
             width="small"
@@ -75,7 +75,7 @@ export default class ScheduleFormPositionEditor extends Mixins(TagEditor) {}
             </template>
         </Field>
         <Field
-            v-model="stage.y"
+            v-model.number="stage.y"
             placeholder="-90 ~ 90"
             type="number"
             width="small"

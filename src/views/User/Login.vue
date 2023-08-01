@@ -28,7 +28,8 @@ export default class Login extends Vue {
             .then((res) => {
                 this.$store.commit('login', {
                     username: res.username,
-                    nickname: res.nickname
+                    nickname: res.nickname,
+                    token: res.token
                 })
                 const path = this.$route.path
                 if (res.username === 'test') {

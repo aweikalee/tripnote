@@ -1,7 +1,7 @@
 import Vue from 'vue'
 
 const dev = Vue.config.devtools
-const mock = Vue.config.devtools && true // 测试时根据需求修改布尔值
+const mock = Vue.config.devtools && !true // 测试时根据需求修改布尔值
 const ossMock = mock || (!mock && true) // 测试时根据需求修改布尔值
 const name = process.env.VUE_APP_FILE_SELF // 项目名字 服务器上按项目名对文件进行分类
 
@@ -17,8 +17,8 @@ const name = process.env.VUE_APP_FILE_SELF // 项目名字 服务器上按项目
 
 export const server = {
     name,
-    baseUrl: !dev ? `/${name}/v1` : mock ? `/` : `//127.0.0.1:82/${name}/v1`,
-    baseRouteUrl: !dev ? `/${name}/#/` : `/#/`
+    baseUrl: !dev ? `/api` : mock ? `/mock` : `/api`,
+    baseRouteUrl: `/#/`
 }
 export const ossServer = {
     name,

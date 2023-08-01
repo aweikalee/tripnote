@@ -286,7 +286,7 @@ export default class DetailEditor extends Vue {
         />
         <ErrorMessage name="消费金额" :error-message="errors.first('消费金额')"/>
         <Field
-            v-model="form.amount"
+            v-model.number="form.amount"
             type="number"
             placeholder="预计人均多少钱？"
             :error="!!errors.first('消费金额')"

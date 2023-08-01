@@ -23,7 +23,11 @@ export default class extends ApiBase {
     lists(pid: number) {
         return new Promise<IDetail[]>((resolve, reject) => {
             this.http
-                .get<IDetail[]>(`/details/${pid}`)
+                .get<IDetail[]>(`/detail`, {
+                    params: {
+                        pid
+                    }
+                })
                 .then((res) => {
                     res = this.adapt<IDetail[]>(res, true)
                     resolve(res)
@@ -52,7 +56,7 @@ export default class extends ApiBase {
     }
     sort(data: IDetail[], loading = false) {
         return this.http.patch(
-            `/details/sort`,
+            `/detail/sort`,
             data.map((item) => {
                 return {
                     id: item.id,

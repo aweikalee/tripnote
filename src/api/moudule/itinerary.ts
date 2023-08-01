@@ -32,7 +32,11 @@ export default class extends ApiBase {
     lists(page: number) {
         return new Promise<IItinerary[]>((resolve, reject) => {
             this.http
-                .get<IItinerary[]>(`/itineraries/${page}`)
+                .get<IItinerary[]>(`/itinerary`, {
+                    params: {
+                        page
+                    }
+                })
                 .then((res) => {
                     res = this.adapt<IItinerary[]>(res, true)
                     resolve(res)

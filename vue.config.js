@@ -185,11 +185,18 @@ module.exports = {
             // })
         ]
     },
+    devServer: {
+        proxy: {
+            '/api': {
+                target: 'http://localhost:3000'
+            }
+        }
+    },
     chainWebpack: (config) => {
         /* 拦截请求 返回mock数据 */
         config.devServer.set('before', (app) => {
             app.use(
-                '/',
+                '/mock',
                 (req, res, next) => {
                     setTimeout(next, Math.random() * 700 + 100) // 模拟请求响应时间
                 },

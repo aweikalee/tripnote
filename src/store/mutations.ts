@@ -74,6 +74,7 @@ const mutations: MutationTree<IState> = {
     login(state, payload: IUserInfo) {
         setState(state, 'username', payload.username, 2592000)
         setState(state, 'nickname', payload.nickname, 2592000)
+        setState(state, 'token', payload.token, 2592000)
         setState(state, 'loggedin', true, 2592000)
     },
     logout(state) {

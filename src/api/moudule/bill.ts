@@ -9,7 +9,7 @@ export default class extends ApiBase {
             update_time: 'timestamp',
             payer: 'array',
             participant: 'array',
-            balance: 'array'
+            balance: 'array',
         })
     }
     read(id: number, local = false) {
@@ -36,10 +36,13 @@ export default class extends ApiBase {
         } else {
             lastUpdate = await db.lastUpdate(pid)
             timestamp = lastUpdate ? lastUpdate.update_time : -1
-            request = this.http.get<IBill[]>(
-                `/bills/${pid}?timestamp=${timestamp}`,
-                { loading }
-            )
+            request = this.http.get<IBill[]>(`/bill`, {
+                params: {
+                    pid,
+                    timestamp,
+                },
+                loading,
+            })
         }
         return new Promise<IBill[]>((resolve, reject) => {
             request
@@ -47,21 +50,20 @@ export default class extends ApiBase {
                     let dbRequest: Array<Promise<{}>> = []
                     if (!local && res) {
                         dbRequest = res.map((item) => {
-                            if (item.state === 0 && item.id) {
-                                return db.delete(item.id)
-                            } else {
-                                if ('payer' in item) {
-                                    item.payer.sort()
-                                }
-                                if ('participant' in item) {
-                                    item.participant.sort()
-                                }
-                                return db.update(item)
+                            if ('payer' in item) {
+                                item.payer.sort()
                             }
+                            if ('participant' in item) {
+                                item.participant.sort()
+                            }
+                            return db.update(item)
                         }) as any
                     }
                     Promise.all(dbRequest)
                         .then(() => {
+                            res = res
+                                ? res.filter((item) => !item.deletedAt)
+                                : res
                             res = this.adapt<IBill[]>(res, true)
                             resolve(res)
                         })
@@ -76,7 +78,7 @@ export default class extends ApiBase {
             return db.create(data)
         } else {
             return this.http.post(`/bill`, data, {
-                loading
+                loading,
             })
         }
     }
@@ -86,15 +88,21 @@ export default class extends ApiBase {
             return db.update(data)
         } else {
             return this.http.put(`/bill`, data, {
-                loading
+                loading,
             })
         }
     }
     createLists(data: IBill[], loading = false, local = false) {
         data = this.adapt<IBill[]>(data)
-        return this.http.post(`/bills`, data, {
-            loading
-        })
+        return this.http.post(
+            `/bill/batch`,
+            {
+                bill: data,
+            },
+            {
+                loading,
+            }
+        )
     }
     delete(id: number, loading = false, local = false) {
         if (local) {
@@ -103,11 +111,11 @@ export default class extends ApiBase {
             return new Promise((reslove, reject) => {
                 this.http
                     .delete(`/bill/${id}`, {
-                        loading
+                        loading,
                     })
                     .then(() => {
                         db.delete(id)
-                            .then(() => reslove())
+                            .then(() => reslove(null))
                             .catch((err) => reject(err))
                     })
                     .catch((err) => reject(err))
@@ -122,12 +130,13 @@ export default class extends ApiBase {
         } else {
             lastUpdate = await db.lastUpdate(pid)
             timestamp = lastUpdate ? lastUpdate.update_time : -1
-            return this.http.get<number>(
-                `/bill/${pid}/count?timestamp=${timestamp}`,
-                {
-                    loading
-                }
-            )
+            return this.http.get<number>(`/bill/count`, {
+                params: {
+                    pid,
+                    timestamp,
+                },
+                loading,
+            })
         }
     }
     lastUpdate(pid: number) {

@@ -84,6 +84,7 @@ export interface IBill {
     create_time: number
     update_time: number
     count: number
+    deletedAt: string | null
 }
 
 export interface IConsumptionType {
@@ -98,4 +99,5 @@ export interface IUserInfo {
     username?: string
     nickname?: string
     password?: string
+    token?: string
 }

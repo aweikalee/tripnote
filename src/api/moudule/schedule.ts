@@ -26,10 +26,14 @@ export default class extends ApiBase {
             }
         })
     }
-    lists(page: number) {
+    lists(pid: number) {
         return new Promise<ISchedule[]>((resolve, reject) => {
             this.http
-                .get<ISchedule[]>(`/schedules/${page}`)
+                .get<ISchedule[]>(`/schedule`, {
+                    params: {
+                        pid
+                    }
+                })
                 .then((res) => {
                     res = this.adapt<ISchedule[]>(res, true)
                     resolve(res)
@@ -52,13 +56,13 @@ export default class extends ApiBase {
         })
     }
     delete(id: number, loading = false) {
-        return this.http.delete(`/itinerary/${id}`, {
+        return this.http.delete(`/schedule/${id}`, {
             loading
         })
     }
     sort(data: ISchedule[], loading = false) {
         return this.http.patch(
-            `/schedules/sort`,
+            `/schedule/sort`,
             data.map((item) => {
                 return {
                     id: item.id,
