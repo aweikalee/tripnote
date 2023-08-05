@@ -22,7 +22,7 @@ export default class ScheduleFormPositionEditor extends Mixins(TagEditor) {
 
             const text = e.clipboardData.getData('text/plain').trim()
 
-            if (/^\d+\,\d+$/.test(text)) {
+            if (/^(-?\d+\.\d+)\,(-?\d+\.\d+)$/.test(text)) {
                 // 坐标
                 const [x, y] = text.split(',').map((v) => Number(v))
                 if (x && y) {
