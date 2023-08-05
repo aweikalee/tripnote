@@ -13,7 +13,7 @@ const name = import.meta.env.VITE_FILE_SELF // 项目名字 服务器上按项�
 export const server = {
     name,
     baseUrl: `/api`,
-    baseRouteUrl: `/#/`,
+    baseRouteUrl: `/`,
 }
 export const ossServer = {
     name,

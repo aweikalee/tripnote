@@ -32,6 +32,7 @@ const needLogin: RouteConfig['beforeEnter'] = (to, from, next) => {
     store.state.loggedin ? next() : next('/login')
 }
 const router = new Router({
+    mode: 'history',
     routes: [
         /* == 首页 =================================== */
         {
