@@ -48,6 +48,17 @@ export default class Entry extends Vue {
     toggleLoginShow() {
         this.$store.commit('loginShow', !this.loginShow)
     }
+    goback() {
+        if (history.state.back) {
+            this.$router.back()
+        } else {
+            const path = this.$route.path
+            if (path !== '/' && path !== '/index') {
+                this.$router.replace('/')
+            }
+
+        }
+    }
     created() {
         if (this.$store.state.lastRoute && this.$route.path === '/') {
             this.$router.replace(this.$store.state.lastRoute)
@@ -64,7 +75,7 @@ export default class Entry extends Vue {
         <nav>
             <Tabbar class="nav">
                 <!-- 返回 -->
-                <Button class="nav-back" type="default" @click="$router.back()">
+                <Button class="nav-back" type="default" @click="goback">
                     <Icon class="nav-back__icon">&#xe60d;</Icon>
                     <span class="nav-back__text">返回</span>
                 </Button>
