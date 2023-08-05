@@ -12,16 +12,70 @@ import ErrorMessage from '@/components/ErrorMessage.vue'
         Field,
         Label,
         EditPopup,
-        ErrorMessage
-    }
+        ErrorMessage,
+    },
 })
-export default class ScheduleFormPositionEditor extends Mixins(TagEditor) {}
+export default class ScheduleFormPositionEditor extends Mixins(TagEditor) {
+    mounted() {
+        const onPaste = (e: ClipboardEvent) => {
+            if ((e.target as Element)?.tagName === 'INPUT') return
+
+            const text = e.clipboardData.getData('text/plain').trim()
+
+            if (/^\d+\,\d+$/.test(text)) {
+                // 坐标
+                const [x, y] = text.split(',').map((v) => Number(v))
+                if (x && y) {
+                    this.stage.x = x
+                    this.stage.y = y
+                }
+                return
+            }
+
+            const arr = text.split('\n')
+
+            const addressIndex = arr.findIndex((v) => v.startsWith('地址：'))
+            const positionIndex = arr.findIndex((v) => v.startsWith('坐标：'))
+
+            if (!addressIndex && !positionIndex) return
+
+            if (~addressIndex) {
+                this.stage.address = arr[addressIndex].replace('地址：', '')
+            }
+
+            if (~positionIndex) {
+                const [x, y] = arr[positionIndex]
+                    .replace('坐标：', '')
+                    .split(',')
+                    .map((v) => Number(v))
+                if (x && y) {
+                    this.stage.x = x
+                    this.stage.y = y
+                }
+            }
+
+            if (addressIndex !== 0 && positionIndex !== 0) {
+                this.stage.title = arr[0]
+            }
+        }
+        addEventListener('paste', onPaste)
+        this.$once('hook:beforeDestroy', () => {
+            removeEventListener('paste', onPaste)
+        })
+    }
+}
 </script>
 
 <template>
-    <EditPopup :value="true" @save="save" @remove="remove" @input="close" :remove="index !== -1">
-        <Label title="标题" description="在地图上显示的标签标题"/>
-        <ErrorMessage name="标题" :error-message="errors.first('标题')"/>
+    <EditPopup
+        :value="true"
+        @save="save"
+        @remove="remove"
+        @input="close"
+        :remove="index !== -1"
+    >
+        <Label title="标题" description="在地图上显示的标签标题" />
+        <ErrorMessage name="标题" :error-message="errors.first('标题')" />
         <Field
             v-model="stage.title"
             placeholder="30字以内"
@@ -32,8 +86,8 @@ export default class ScheduleFormPositionEditor extends Mixins(TagEditor) {}
             data-vv-validate-on="blur"
         />
 
-        <Label title="地址" description="详细地址"/>
-        <ErrorMessage name="地址" :error-message="errors.first('地址')"/>
+        <Label title="地址" description="详细地址" />
+        <ErrorMessage name="地址" :error-message="errors.first('地址')" />
         <Field
             v-model="stage.address"
             placeholder="255字以内"
@@ -48,13 +102,14 @@ export default class ScheduleFormPositionEditor extends Mixins(TagEditor) {}
                 以百度坐标为准
                 <a
                     class="link"
-                    href="http://api.map.baidu.com/lbsapi/getpoint"
+                    href="https://api.map.baidu.com/lbsapi/getpoint/index.html"
                     target="blank"
-                >坐标拾取器</a>
+                    >坐标拾取器</a
+                >
             </template>
         </Label>
-        <ErrorMessage name="经度" :error-message="errors.first('经度')"/>
-        <ErrorMessage name="纬度" :error-message="errors.first('纬度')"/>
+        <ErrorMessage name="经度" :error-message="errors.first('经度')" />
+        <ErrorMessage name="纬度" :error-message="errors.first('纬度')" />
         <Field
             v-model.number="stage.x"
             placeholder="-180 ~ 180"
@@ -67,7 +122,7 @@ export default class ScheduleFormPositionEditor extends Mixins(TagEditor) {}
                 max: 10,
                 decimal: true,
                 max_value: 180,
-                min_value: -180
+                min_value: -180,
             }"
         >
             <template v-slot:prepend>
@@ -86,13 +141,17 @@ export default class ScheduleFormPositionEditor extends Mixins(TagEditor) {}
                 max: 10,
                 decimal: true,
                 max_value: 90,
-                min_value: -90
+                min_value: -90,
             }"
         >
             <template v-slot:prepend>
                 <span class="label">纬度</span>
             </template>
         </Field>
+
+        <div class="tips">
+            未选中输入框时，可通过粘贴进行快速填充。
+        </div>
     </EditPopup>
 </template>
 
@@ -112,5 +171,11 @@ export default class ScheduleFormPositionEditor extends Mixins(TagEditor) {}
 }
 .label {
     padding: 0 1.2rem;
+}
+
+.tips {
+    margin-top: 1.2rem;
+    font-size: 1.2rem;
+    color: $c-999;
 }
 </style>
