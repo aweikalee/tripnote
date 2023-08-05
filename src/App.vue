@@ -1,11 +1,13 @@
 <script lang="ts">
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator'
-import { Route } from 'vue-router'
 import * as api from '@/api'
 import { isMobile, systemOS } from '@/utils/navigator'
+import PWAPrompt from './PWAPrompt.vue'
 
 @Component({
-    components: {}
+    components: {
+        PWAPrompt
+    }
 })
 export default class App extends Vue {
     ready = false
@@ -43,6 +45,7 @@ export default class App extends Vue {
 <template>
     <div id="app">
         <router-view v-if="ready"/>
+        <PWAPrompt />
     </div>
 </template>
 

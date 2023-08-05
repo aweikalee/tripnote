@@ -19,7 +19,7 @@ export function setItem(key: string, value: any, expires?: number) {
         data.expires = Math.round(new Date().getTime() / 1000) + expires
     }
     localStorage.setItem(
-        `${process.env.VUE_APP_FILE_SELF}_${key}`,
+        `${import.meta.env.VITE_FILE_SELF}_${key}`,
         JSON.stringify(data)
     )
 }
@@ -31,7 +31,7 @@ export function setItem(key: string, value: any, expires?: number) {
 export function getItem(key: string) {
     try {
         const data: string | null = localStorage.getItem(
-            `${process.env.VUE_APP_FILE_SELF}_${key}`
+            `${import.meta.env.VITE_FILE_SELF}_${key}`
         )
         const result: ILocalItem =
             data === null ? { value: '' } : JSON.parse(data)

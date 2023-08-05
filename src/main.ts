@@ -1,7 +1,7 @@
 import Vue from 'vue'
+import 'normalize.css'
 import router from './router'
 import store from './store'
-import './registerServiceWorker'
 import App from './App.vue'
 import elementUI from './plugins/element'
 import VeeValidate from '@/plugins/VeeValidate'

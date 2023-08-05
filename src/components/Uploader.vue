@@ -4,7 +4,7 @@ import { ossServer } from '@/config'
 import { HttpRequest } from '@/api/http'
 import SparkMD5 from 'spark-md5'
 import * as api from '@/api'
-import { ElLoadingComponent } from 'element-ui/types/loading'
+import type { ElLoadingComponent } from 'element-ui/types/loading'
 
 const http = new HttpRequest({
     baseURL: ossServer.baseUrl,

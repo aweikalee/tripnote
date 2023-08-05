@@ -1,9 +1,4 @@
-import Vue from 'vue'
-
-const dev = Vue.config.devtools
-const mock = Vue.config.devtools && !true // 测试时根据需求修改布尔值
-const ossMock = mock || (!mock && true) // 测试时根据需求修改布尔值
-const name = process.env.VUE_APP_FILE_SELF // 项目名字 服务器上按项目名对文件进行分类
+const name = import.meta.env.VITE_FILE_SELF // 项目名字 服务器上按项目名对文件进行分类
 
 /*
  * 请求地址 需要区分 “生产环境”和“测试环境”
@@ -17,14 +12,14 @@ const name = process.env.VUE_APP_FILE_SELF // 项目名字 服务器上按项目
 
 export const server = {
     name,
-    baseUrl: !dev ? `/api` : mock ? `/mock` : `/api`,
-    baseRouteUrl: `/#/`
+    baseUrl: `/api`,
+    baseRouteUrl: `/#/`,
 }
 export const ossServer = {
     name,
     bucket: 'awwwk',
-    baseUrl: !dev || !ossMock ? '//awwwk.oss-cn-hangzhou.aliyuncs.com' : '/img',
-    accessid: 'LTAIgR4F6QvWtnAo'
+    baseUrl: '//awwwk.oss-cn-hangzhou.aliyuncs.com',
+    accessid: 'LTAIgR4F6QvWtnAo',
 }
 
 export const BMap: {
@@ -34,5 +29,5 @@ export const BMap: {
 } = {
     version: '3.0',
     ak: 'Do1xqqyFkX61HjUoDBn3PHuGZ6cbaVd0',
-    callbackName: 'BMapLoader'
+    callbackName: 'BMapLoader',
 }

@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang="tsx">
 import { Component, Vue, Prop } from 'vue-property-decorator'
 import Tag from '@/components/Tag.vue'
 import ErrorMessage from '@/components/ErrorMessage.vue'

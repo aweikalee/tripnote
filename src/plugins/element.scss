@@ -29,22 +29,22 @@ $--dropdown-menuItem-hover-fill: $c-eee;
 $--dropdown-menuItem-hover-color:$c-333;
 
 /* 改变 icon 字体路径变量，必需 */
-$--font-path: '~element-ui/lib/theme-chalk/fonts';
-@import '~element-ui/packages/theme-chalk/src/icon';
-@import '~element-ui/packages/theme-chalk/src/checkbox.scss';
-@import '~element-ui/packages/theme-chalk/src/checkbox-group.scss';
-@import '~element-ui/packages/theme-chalk/src/date-picker.scss';
-@import '~element-ui/packages/theme-chalk/src/dialog.scss';
-@import '~element-ui/packages/theme-chalk/src/dropdown.scss';
-@import '~element-ui/packages/theme-chalk/src/loading.scss';
-@import '~element-ui/packages/theme-chalk/src/message.scss';
-@import '~element-ui/packages/theme-chalk/src/message-box.scss';
-@import '~element-ui/packages/theme-chalk/src/notification.scss';
-@import '~element-ui/packages/theme-chalk/src/radio.scss';
-@import '~element-ui/packages/theme-chalk/src/radio-group.scss';
-@import '~element-ui/packages/theme-chalk/src/select.scss';
-@import '~element-ui/packages/theme-chalk/src/switch.scss';
-@import '~element-ui/packages/theme-chalk/src/time-select.scss';
+$--font-path: 'element-ui/lib/theme-chalk/fonts';
+@import 'element-ui/packages/theme-chalk/src/icon';
+@import 'element-ui/packages/theme-chalk/src/checkbox.scss';
+@import 'element-ui/packages/theme-chalk/src/checkbox-group.scss';
+@import 'element-ui/packages/theme-chalk/src/date-picker.scss';
+@import 'element-ui/packages/theme-chalk/src/dialog.scss';
+@import 'element-ui/packages/theme-chalk/src/dropdown.scss';
+@import 'element-ui/packages/theme-chalk/src/loading.scss';
+@import 'element-ui/packages/theme-chalk/src/message.scss';
+@import 'element-ui/packages/theme-chalk/src/message-box.scss';
+@import 'element-ui/packages/theme-chalk/src/notification.scss';
+@import 'element-ui/packages/theme-chalk/src/radio.scss';
+@import 'element-ui/packages/theme-chalk/src/radio-group.scss';
+@import 'element-ui/packages/theme-chalk/src/select.scss';
+@import 'element-ui/packages/theme-chalk/src/switch.scss';
+@import 'element-ui/packages/theme-chalk/src/time-select.scss';
 // @import '~element-ui/packages/theme-chalk/src/index';
 
 /* 遮罩 */

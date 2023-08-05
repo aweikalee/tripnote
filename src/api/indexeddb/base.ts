@@ -1,6 +1,6 @@
 import IndexedDB from './indexeddb/index'
 const baseDB = new IndexedDB({
-    name: process.env.VUE_APP_FILE_SELF
+    name: import.meta.env.VITE_FILE_SELF
 })
 baseDB.upgradeDB(1, (db, request, e) => {
     const bill = db.createObjectStore('bill', {
