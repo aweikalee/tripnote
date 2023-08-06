@@ -43,7 +43,7 @@ export default defineConfig({
           rootValue: 10,
           minPixelValue: 3,
           exclude:
-            /(node_modules)|index.html|(src\\(App|views|components|style))/,
+            /(node_modules)|(index\.html)|(src\/(App|views|components|style))/,
         }),
         autoprefixer,
       ],
