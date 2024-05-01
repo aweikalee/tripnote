@@ -81,6 +81,7 @@ export default class IndexFormCurrencyEditor extends Mixins(TagEditor) {
         />
         <Field
             v-model.number="stage.rate"
+            type="number"
             placeholder="请输入正数"
             :error="!!errors.first('汇率')"
             width="small"
