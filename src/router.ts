@@ -23,6 +23,7 @@ import UserInndex from './views/User/Index.vue'
 import Login from './views/User/Login.vue'
 import Register from './views/User/Register.vue'
 import SetPassword from './views/User/SetPassword.vue'
+import Options from './views/User/Options.vue'
 
 import NotFound from './views/Other/NotFound.vue'
 
@@ -309,6 +310,12 @@ const router = new Router({
                 {
                     path: 'setpassword',
                     component: SetPassword,
+                    beforeEnter: needLogin
+                },
+                /* 设置 */
+                {
+                    path: 'options',
+                    component: Options,
                     beforeEnter: needLogin
                 }
             ]

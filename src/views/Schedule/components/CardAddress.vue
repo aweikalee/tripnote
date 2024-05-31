@@ -24,15 +24,21 @@ export default class ScheduleCard extends Vue {
     // TODO: 如果对方没有装百度地图APP 该如何处理？
     getMapUrl(value: IPosition) {
         const os = this.systemOS
-        let parse = ''
-        parse += `location=${value.y},${value.x}`
-        parse += `&title=${value.title}`
-        parse += `&content=${value.address}`
         if (os === 'ios' || os === 'android') {
+            switch (this.$store.state.mapType){
+                case 'baidu':
+                    return 'baidumap://map/marker?location=${value.y},${value.x}&title=${value.title}&content=${value.address}'
+                case 'google':
+                    return `https://www.google.com/maps/search/?api=1&query=${value.y},${value.x}`
+            }
             return 'baidumap://map/marker?' + parse
         } else {
-            parse += '&output=html'
-            return '//api.map.baidu.com/marker?' + parse
+            switch (this.$store.state.mapType){
+                case 'baidu':
+                    return `//api.map.baidu.com/marker?location=${value.y},${value.x}&title=${value.title}&content=${value.address}&output=html`
+                case 'google':
+                    return `https://www.google.com/maps/search/?api=1&query=${value.y},${value.x}`
+            }
         }
     }
 }

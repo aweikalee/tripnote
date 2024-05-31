@@ -24,6 +24,7 @@ export interface ILocalState {
     nickname: string
     loggedin: boolean
     detailSpread: boolean
+    mapType: 'baidu' | 'google'
 }
 export const localState: ILocalState = {
     lastRoute: '', // 记录用户最后浏览的页面 用于PWA打开时能直接打开该页（允许记录的页面有[/, /itinerary/:id, /schedule/:id, /bill/:pid]）
@@ -32,7 +33,8 @@ export const localState: ILocalState = {
     username: '',
     nickname: '',
     loggedin: false,
-    detailSpread: false
+    detailSpread: false,
+    mapType: 'baidu'
 }
 
 /* 保存在内存的属性 */

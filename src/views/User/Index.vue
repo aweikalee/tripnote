@@ -33,10 +33,10 @@ export default class UserIndex extends Vue {
         </div>
 
         <card class="card">
-            <div class="card-item disabled">
+            <Ripple class="card-item" to="/user/options">
                 <div class="text">设置</div>
                 <Icon class="icon">&#xe61d;</Icon>
-            </div>
+            </Ripple>
             <Ripple class="card-item" to="/user/setpassword">
                 <div class="text">修改密码</div>
                 <Icon class="icon">&#xe61d;</Icon>

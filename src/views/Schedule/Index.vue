@@ -196,10 +196,6 @@ export default class Schedule extends Vue {
                             :inactive-value="false"
                         />
                     </el-dropdown-item>
-
-                    <el-dropdown-item title="地图设置" disabled>
-                        <Icon>&#xe602;</Icon>地图设置
-                    </el-dropdown-item>
                 </template>
             </HeaderBar>
         </template>
