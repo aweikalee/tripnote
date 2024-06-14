@@ -27,7 +27,7 @@ export default class ScheduleCard extends Vue {
         if (os === 'ios' || os === 'android') {
             switch (this.$store.state.mapType){
                 case 'baidu':
-                    return 'baidumap://map/marker?location=${value.y},${value.x}&title=${value.title}&content=${value.address}'
+                    return `baidumap://map/marker?location=${value.y},${value.x}&title=${value.title}&content=${value.address}`
                 case 'google':
                     return `https://www.google.com/maps/search/?api=1&query=${value.y},${value.x}`
             }
