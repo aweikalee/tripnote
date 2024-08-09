@@ -19,7 +19,7 @@ export const ossServer = {
     name,
     bucket: 'awwwk',
     baseUrl: '//awwwk.oss-cn-hangzhou.aliyuncs.com',
-    accessid: 'LTAIgR4F6QvWtnAo',
+    accessid: 'LTAI5tDtX4HKna5rekfA18s5',
 }
 
 export const BMap: {
