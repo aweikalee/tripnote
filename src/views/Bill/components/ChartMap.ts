@@ -60,7 +60,7 @@ map.push({
                         const percent =
                             item.participant.filter((p) => partners.includes(p))
                                 .length / item.participant.length
-                        return Number(item.amount) * rate * percent
+                        return Number(item.amount) / rate * percent
                     })
                 const total = Math.round(sum(arr))
                 return {
@@ -151,7 +151,7 @@ map.push({
                                     item.participant.filter((p) =>
                                         partners.includes(p)
                                     ).length / item.participant.length
-                                return Number(item.amount) * rate * percent
+                                return Number(item.amount) / rate * percent
                             })
                         return sum(arr)
                     }),
@@ -287,7 +287,7 @@ map.push({
         lists.forEach((item) => {
             const { payer, participant, balance } = item
             const amount =
-                Number(item.amount) * getters.getCurrencyRate(item.currency)
+                Number(item.amount) / getters.getCurrencyRate(item.currency)
             const amountPart = amount / participant.length
             const realBalance = Object.assign([], payer, balance)
 

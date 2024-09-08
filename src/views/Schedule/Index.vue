@@ -106,7 +106,7 @@ export default class Schedule extends Vue {
         this.lists.forEach((item) => {
             const type = item.currency
             const rate = this.getCurrencyRate(type)
-            total += Number(item.amount) * rate
+            total += Number(item.amount) / rate
         })
         return Math.floor(total)
     }
