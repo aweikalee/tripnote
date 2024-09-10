@@ -119,7 +119,7 @@ export default class ScheduleFormPositionEditor extends Mixins(TagEditor) {
             name="经度"
             v-validate="{
                 required: true,
-                max: 10,
+                max: 14,
                 decimal: true,
                 max_value: 180,
                 min_value: -180,
@@ -138,7 +138,7 @@ export default class ScheduleFormPositionEditor extends Mixins(TagEditor) {
             name="纬度"
             v-validate="{
                 required: true,
-                max: 10,
+                max: 13,
                 decimal: true,
                 max_value: 90,
                 min_value: -90,
