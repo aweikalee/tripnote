@@ -314,7 +314,7 @@ export default class BillIndex extends Vue {
                 currency.includes(item.currency) &&
                 pay_mode.includes(item.pay_mode) &&
                 item.payer.find((p) => payer.includes(p)) &&
-                item.participant.find((p) => payer.includes(p))
+                item.participant.find((p) => participant.includes(p))
             )
         }).forEach((item) => {
             const time = ts.toUTCZeroClock(item.create_time)
