@@ -34,7 +34,7 @@ export const localState: ILocalState = {
     nickname: '',
     loggedin: false,
     detailSpread: false,
-    mapType: 'baidu'
+    mapType: 'google'
 }
 
 /* 保存在内存的属性 */
