@@ -4,7 +4,7 @@ import ApiBase from './base'
 export default class extends ApiBase {
     constructor() {
         super({
-            position: 'array'
+            position: 'array',
         })
     }
     read(id: number) {
@@ -25,8 +25,8 @@ export default class extends ApiBase {
             this.http
                 .get<IDetail[]>(`/detail`, {
                     params: {
-                        pid
-                    }
+                        pid,
+                    },
                 })
                 .then((res) => {
                     res = this.adapt<IDetail[]>(res, true)
@@ -39,19 +39,33 @@ export default class extends ApiBase {
     }
     create(data: IDetail, loading = false) {
         data = this.adapt<IDetail>(data)
-        return this.http.post(`/detail`, data, {
-            loading
-        })
+        return this.http.post(
+            `/detail`,
+            {
+                ...data,
+                amount: data?.amount || 0,
+            },
+            {
+                loading,
+            }
+        )
     }
     update(data: IDetail, loading = false) {
         data = this.adapt<IDetail>(data)
-        return this.http.put(`/detail`, data, {
-            loading
-        })
+        return this.http.put(
+            `/detail`,
+            {
+                ...data,
+                amount: data?.amount || 0,
+            },
+            {
+                loading,
+            }
+        )
     }
     delete(id: number, loading = false) {
         return this.http.delete(`/detail/${id}`, {
-            loading
+            loading,
         })
     }
     sort(data: IDetail[], loading = false) {
@@ -60,11 +74,11 @@ export default class extends ApiBase {
             data.map((item) => {
                 return {
                     id: item.id,
-                    sort: item.sort
+                    sort: item.sort,
                 }
             }),
             {
-                loading
+                loading,
             }
         )
     }
